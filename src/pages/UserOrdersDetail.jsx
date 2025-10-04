@@ -122,10 +122,9 @@ function Orders() {
                   <ListItem>
                     <ListItemText
                       primary={`Đơn hàng #${order.id} - ${order.status}`}
-                      secondary={`Ngày: ${new Date(
-                        order.created_at
-                      ).toLocaleString()} | Tổng: ${order.total.toLocaleString()} đ`}
+                      secondary={`Ngày: ${order.created_at}`}
                     />
+
                   </ListItem>
                   <Divider />
                 </React.Fragment>

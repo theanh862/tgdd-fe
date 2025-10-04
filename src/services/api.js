@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: 'http://localhost:8000/api', // Thay bằng URL backend của bạn
+  baseURL: 'http://localhost:8000/api', 
   headers: {
     'Content-Type': 'application/json',
   },
@@ -24,7 +24,7 @@ export const getProducts = (params) => api.get('/products', { params });
 export const getProductById = (id) => api.get(`/products/${id}`);
 export const getCart = () => api.get('/cart');
 export const addToCart = (productId) => api.post('/cart', { product_id: productId });
-export const getOrders = () => api.get('/orders');
+export const getOrders = (params) => api.get('/orders', { params });
 export const updateOrderStatus = (orderId, status) => api.put(`/orders/${orderId}`, { status });
 
 export default api;
