@@ -1,61 +1,54 @@
 import React from "react";
-import { Box, Button } from "@mui/material";
-import PhoneIphoneIcon from "@mui/icons-material/PhoneIphone";
-import LaptopIcon from "@mui/icons-material/Laptop";
-import TabletMacIcon from "@mui/icons-material/TabletMac";
-import WatchIcon from "@mui/icons-material/Watch";
-import HeadphonesIcon from "@mui/icons-material/Headphones";
-import ReplayIcon from "@mui/icons-material/Replay"; 
-import PrintIcon from "@mui/icons-material/Print";
-import SimCardIcon from "@mui/icons-material/SimCard";
-import MiscellaneousServicesIcon from "@mui/icons-material/MiscellaneousServices";
-import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap-icons/font/bootstrap-icons.css";
 
 function Navbar() {
   const menus = [
-    { label: "Điện thoại", icon: <PhoneIphoneIcon fontSize="small" /> },
-    { label: "Laptop", icon: <LaptopIcon fontSize="small" /> },
-    { label: "Phụ kiện", icon: <HeadphonesIcon fontSize="small" />, dropdown: true },
-    { label: "Tablet", icon: <TabletMacIcon fontSize="small" /> },
-    
-    { label: "Smartwatch", icon: <WatchIcon fontSize="small" /> },
-    { label: "Đồng hồ", icon: <WatchIcon fontSize="small" /> },
-    { label: "Máy cũ, Thu cũ", icon: <ReplayIcon fontSize="small" />, dropdown: true },
-    { label: "Màn hình, Máy in", icon: <PrintIcon fontSize="small" />, dropdown: true },
-    { label: "Sim, Thẻ cào", icon: <SimCardIcon fontSize="small" />, dropdown: true },
-    { label: "Dịch vụ tiện ích", icon: <MiscellaneousServicesIcon fontSize="small" />, dropdown: true },
+    { label: "Điện thoại", icon: "bi-phone" },
+    { label: "Laptop", icon: "bi-laptop" },
+    { label: "Phụ kiện", icon: "bi-headphones", dropdown: true },
+    { label: "Tablet", icon: "bi-tablet" },
+    { label: "Smartwatch", icon: "bi-smartwatch" },
+    { label: "Đồng hồ", icon: "bi-watch" },
+    { label: "Máy cũ, Thu cũ", icon: "bi-arrow-repeat", dropdown: true },
+    { label: "Màn hình, Máy in", icon: "bi-printer", dropdown: true },
+    { label: "Sim, Thẻ cào", icon: "bi-sim", dropdown: true },
+    { label: "Dịch vụ tiện ích", icon: "bi-gear", dropdown: true },
   ];
 
   return (
-    <Box
-      sx={{
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        px: 2,
-        py: 1,
+    <div
+      className="d-flex align-items-center justify-content-center flex-wrap"
+      style={{
         backgroundColor: "#FFD700",
+        padding: "8px 16px",
       }}
     >
       {menus.map((menu, index) => (
-        <Button
+        <button
           key={index}
-          startIcon={menu.icon}
-          endIcon={menu.dropdown ? <ArrowDropDownIcon /> : null}
-          sx={{
+          className="btn d-flex align-items-center mx-1"
+          style={{
             color: "#000",
-            textTransform: "none",
-            fontSize: 14,
+            fontSize: "14px",
             fontWeight: 500,
-            "&:hover": {
-              backgroundColor: "#fe9",
-            },
+            textTransform: "none",
+            transition: "background-color 0.2s",
+            borderRadius: "10px",
           }}
+          onMouseEnter={(e) =>
+            (e.currentTarget.style.backgroundColor = "#fe9")
+          }
+          onMouseLeave={(e) =>
+            (e.currentTarget.style.backgroundColor = "transparent")
+          }
         >
+          <i className={`bi ${menu.icon} me-1`}></i>
           {menu.label}
-        </Button>
+          {menu.dropdown && <i className="bi bi-caret-down-fill ms-1"></i>}
+        </button>
       ))}
-    </Box>
+    </div>
   );
 }
 

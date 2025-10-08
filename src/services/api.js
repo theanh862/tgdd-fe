@@ -26,5 +26,6 @@ export const getCart = () => api.get('/cart');
 export const addToCart = (productId) => api.post('/cart', { product_id: productId });
 export const getOrders = (params) => api.get('/orders', { params });
 export const updateOrderStatus = (orderId, status) => api.put(`/orders/${orderId}`, { status });
+export const getStats = () => api.get('admin/stats')
 
 export default api;

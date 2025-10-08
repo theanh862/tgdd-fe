@@ -1,37 +1,37 @@
-import { Button } from "@mui/material"
-import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { useNavigate } from "react-router-dom";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap-icons/font/bootstrap-icons.css";
 
-function CartIconButton () {
-
-  const navigate = useNavigate() ;
+function CartIconButton() {
+  const navigate = useNavigate();
 
   const handleClick = () => {
     const loggedIn = localStorage.getItem("token");
     if (!loggedIn) {
-      navigate("/login")
-      return
+      navigate("/login");
+      return;
     }
-    navigate("/cart")
+    navigate("/cart");
   };
 
-  return(
-  <Button
-    startIcon={<ShoppingCartIcon />}
-    onClick={handleClick}
-    sx={{ 
-          color: "#000",
-          textTransform: "none",
-          fontWeight: 500,
-          borderRadius: 50,
-            "&:hover": {
-              backgroundColor: "#fe9",         
-            }
-    }}
-  >
-    Giỏ hàng
-  </Button>
-  )
+  return (
+    <button
+      className="btn d-flex align-items-center"
+      onClick={handleClick}
+      style={{
+        color: "#000",
+        fontWeight: 500,
+        borderRadius: "50px",
+        textTransform: "none",
+        transition: "background-color 0.3s",
+      }}
+      onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = "#fe9")}
+      onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = "transparent")}
+    >
+      <i className="bi bi-cart me-2"></i>
+      Giỏ hàng
+    </button>
+  );
 }
 
 export default CartIconButton;

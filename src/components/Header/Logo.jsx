@@ -1,24 +1,26 @@
-import { Box } from "@mui/material"
-import { useNavigate } from "react-router-dom"
-function IconButton () {
-  const navigate = useNavigate();
-  return (
+import React from "react";
+import { useNavigate } from "react-router-dom";
 
-  <Box
-      component="img"
+function IconButton() {
+  const navigate = useNavigate();
+
+  return (
+    <img
       src="/tgdd-icon.png"
-      alt="tgdd-icon"
-      sx={{
-        width: 240,
-        height: 45,
-        objectFit: "cover",
-        mr: 2, 
-        mb: "4px",
-        cursor : "pointer"
+      alt="Thế Giới Di Động"
+      width="240"
+      height="45"
+      className="me-3 mb-1"
+      style={{
+        objectFit: "contain",
+        cursor: "pointer",
+        transition: "opacity 0.2s",
       }}
       onClick={() => navigate("/")}
+      onMouseOver={(e) => (e.currentTarget.style.opacity = 0.8)}
+      onMouseOut={(e) => (e.currentTarget.style.opacity = 1)}
     />
-    )
+  );
 }
 
-export default IconButton
+export default IconButton;

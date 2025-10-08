@@ -1,55 +1,42 @@
 import React from "react";
-import { Box, Select, MenuItem } from "@mui/material";
-import LocationOnIcon from "@mui/icons-material/LocationOn";
-import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap-icons/font/bootstrap-icons.css";
 
 function LocationButton() {
   return (
-    <Box
-      sx={{
+    <div
+      className="d-flex align-items-center justify-content-between"
+      style={{
         color: "black",
         fontWeight: 500,
         backgroundColor: "#ffe14c",
         borderRadius: "20px",
-        px: 2,
-        display: "flex",
-        justifyContent: "space-between",
-        alignItems: "center",
+        padding: "0 12px",
         width: "320px",
-        ml: 1,
-        height: 50,
+        height: "50px",
+        marginLeft: "8px",
       }}
     >
-      <Select
-      variant="standard"
-        disableUnderline
+      <select
+        className="form-select border-0 bg-transparent fw-medium"
         defaultValue="hanoi"
-        border= "none"
-        sx={{
-          display: "flex",
-          alignItems: "center",
-          gap: 1,
-          fontSize: 14,
-          minWidth: 320,
-          "& .MuiSelect-select": {
-            display: "flex",
-            alignItems: "center",
-            gap: 1,
-            padding: 0,
-          },
+        style={{
+          fontSize: "14px",
+          boxShadow: "none",
+          cursor: "pointer",
         }}
       >
-        <MenuItem value="hanoi">
-          <LocationOnIcon fontSize="small" /> Hà Nội
-        </MenuItem>
-        <MenuItem value="hcm">
-          <LocationOnIcon fontSize="small" /> TP. Hồ Chí Minh
-        </MenuItem>
-        <MenuItem value="other">
-          <LocationOnIcon fontSize="small" /> Địa điểm khác
-        </MenuItem>
-      </Select>
-    </Box>
+        <option value="hanoi">
+           Hà Nội
+        </option>
+        <option value="hcm">
+           TP. Hồ Chí Minh
+        </option>
+        <option value="other">
+           Địa điểm khác
+        </option>
+      </select>
+    </div>
   );
 }
 

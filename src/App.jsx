@@ -11,6 +11,7 @@ import Register from './pages/Register';
 import Cart from './pages/Cart';
 import OrderHistory from './pages/OrderHistory';
 import UserOrdersDetail from './pages/UserOrdersDetail';
+import AdminDashBoard from './pages/AdminMain';
 function App() {
   return (
     <ThemeProvider theme={theme}>
@@ -25,6 +26,7 @@ function App() {
           <Route path="/cart" element={<Cart />} />
           <Route path="/orders" element={<OrderHistory />} />
           <Route path='/userordersdetail' element={<UserOrdersDetail />} />
+          <Route path='/admindashboard' element={<AdminDashBoard />} />
         </Routes>
         <Footer />
       </Router>

@@ -1,65 +1,58 @@
-import { Button } from "@mui/material"
-import { useNavigate } from "react-router-dom"
-import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { getUser } from "../../services/api";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap-icons/font/bootstrap-icons.css";
 
-
-function LoginButton () {
+function LoginButton() {
   const [user, setUser] = useState(null);
   const navigate = useNavigate();
 
-  useEffect(() => { 
+  useEffect(() => {
     const fetchUser = async () => {
       try {
         const response = await getUser();
-        setUser(response.data)
-        localStorage.setItem("role", response.data.role)
+        setUser(response.data);
+        localStorage.setItem("role", response.data.role);
       } catch (err) {
         console.error("Không lấy được user:", err);
       }
     };
 
     fetchUser();
-
   }, []);
 
   const handleClick = () => {
-    if (!user) { 
-      navigate('/login')
-    } else {  
-      if (user.role === 'admin') {
-        navigate('/admin/dashboard')
+    if (!user) {
+      navigate("/login");
+    } else {
+      if (user.role === "admin") {
+        navigate("/admindashboard");
       } else {
-        navigate('/userordersdetail')
+        navigate("/userordersdetail");
       }
-
     }
   };
 
-return (
-  <>
-     <Button
-        startIcon={<AccountCircleIcon />}
-        onClick={handleClick}
-        sx={{ 
-            color: "#000",
-            textTransform: "none",
-            fontWeight: 500,
-            borderRadius: 50,
-            ml: 2,
-            "&:hover": {
-              backgroundColor: "#fe9"
-            }
-          }}     
-      >
-        { user ? `${user.name}` : 'Đăng Nhập' }
-      </Button>
-      </>
-);
+  return (
+    <button
+      className="btn d-flex align-items-center"
+      onClick={handleClick}
+      style={{
+        color: "#000",
+        textTransform: "none",
+        fontWeight: 500,
+        borderRadius: "50px",
+        marginLeft: "8px",
+        transition: "background-color 0.3s",
+      }}
+      onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = "#fe9")}
+      onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = "transparent")}
+    >
+      <i className="bi bi-person-circle me-2"></i>
+      {user ? `${user.name}` : "Đăng Nhập"}
+    </button>
+  );
 }
 
-
-
-
-export default LoginButton
+export default LoginButton;
